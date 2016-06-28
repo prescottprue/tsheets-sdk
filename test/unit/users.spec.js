@@ -3,26 +3,26 @@ import { users } from '../../src'
 
 describe('users', () => {
   it('is a function', () => {
-    expect(users).to.be.a.function
+    expect(users).to.be.an.object
   })
   describe('get', () => {
     it('exists', () => {
-      expect(users()).to.respondTo('get')
+      expect(users).to.respondTo('get')
     })
   })
   describe('add', () => {
     it('exists', () => {
-      expect(users()).to.respondTo('add')
+      expect(users).to.respondTo('add')
     })
   })
   describe('remove', () => {
     it('exists', () => {
-      expect(users()).to.respondTo('remove')
+      expect(users).to.respondTo('remove')
     })
   })
   describe('update', () => {
     it('exists', () => {
-      expect(users()).to.respondTo('update')
+      expect(users).to.respondTo('update')
     })
   })
 })

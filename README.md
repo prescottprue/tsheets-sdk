@@ -13,11 +13,74 @@
 ## Authentication
 Set the environment variable `TSHEETS_TOKEN` to a TSheets access token.
 
+## Usage
+
+#### ES6
+```js
+// Top level import
+import TSheets from 'tsheets-sdk'
+// or destructured
+import { reports, timesheets, groups, jobcodes } from 'tsheets-sdk'
+```
+
 ## API
 
-### `reports.getProjectReport(params)`
+#### `reports.getPayrollReport(params)`
+
+Retrieves a payroll report, with filters to narrow down the results.
+
+**Example**
+
+```js
+import { reports } from 'tsheets-sdk'
+reports().getPayrollReport()
+  .then(report => console.log('report:', report))
+  .catch(error => console.error('error getting report:', error))
+```
+
+**Params**
+
+| Parameter  | Description                                      | Type     | Required |
+|------------|--------------------------------------------------|----------|----------|
+| start_date | `YYYY-MM-DD` for the starting date.              | string   | Yes      |
+| end_date   | `YYYY-MM-DD` for the end date.                   | string   | No       |
+| user_ids   | Array of TSheets user IDs to get time for.       | number[] | No       |
+| page       | Page number for timesheets (max 50 per page).    | number   | No       |
+
+#### `reports.getProjectReport(params)`
 
 Retrieves a project report, with filters to narrow down the results.
+
+**Example**
+
+```js
+import { reports } from 'tsheets-sdk'
+reports().getProjectReport()
+  .then(report => console.log('report:', report))
+  .catch(error => console.error('error getting report:', error))
+```
+
+**Params**
+
+| Parameter  | Description                                      | Type     | Required |
+|------------|--------------------------------------------------|----------|----------|
+| start_date | `YYYY-MM-DD` for the starting date.              | string   | Yes      |
+| end_date   | `YYYY-MM-DD` for the end date.                   | string   | No       |
+| user_ids   | Array of TSheets user IDs to get time for.       | number[] | No       |
+| page       | Page number for timesheets (max 50 per page).    | number   | No       |
+
+#### `reports.getCurrentTotalsReport(params)`
+
+Retrieves a current totals report, with filters to narrow down the results.
+
+**Example**
+
+```js
+import { reports } from 'tsheets-sdk'
+reports().getCurrentTotalsReport()
+  .then(report => console.log('report:', report))
+  .catch(error => console.error('error getting report:', error))
+```
 
 **Params**
 
@@ -33,6 +96,15 @@ Retrieves a project report, with filters to narrow down the results.
 #### `timesheets.get(params)`
 
 Gets timesheets for the specified user(s) for the provided time period.
+
+**Example**
+
+```js
+import { reports } from 'tsheets-sdk'
+timesheets().get()
+  .then(report => console.log('timesheets:', timesheets))
+  .catch(error => console.error('error getting timesheets:', error))
+```
 
 **Params**
 

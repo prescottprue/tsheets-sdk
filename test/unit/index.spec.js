@@ -7,16 +7,16 @@ describe('tsheets-sdk', () => {
       expect(TSheets).to.be.a.function
     })
     it('has groups parameter', () => {
-      expect(library).to.respondTo('groups')
+      expect(library).to.have.property('groups')
     })
     it('has jobcodes parameter', () => {
-      expect(library).to.respondTo('jobcodes')
+      expect(library).to.have.property('jobcodes')
     })
     it('has timesheets parameter', () => {
-      expect(library).to.respondTo('timesheets')
+      expect(library).to.have.property('timesheets')
     })
     it('has users parameter', () => {
-      expect(library).to.respondTo('users')
+      expect(library).to.have.property('users')
     })
   })
 })

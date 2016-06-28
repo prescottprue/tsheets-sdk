@@ -3,21 +3,21 @@ import { reports } from '../../src'
 
 describe('reports', () => {
   it('exists', () => {
-    expect(reports).to.be.a.function
+    expect(reports).to.be.an.object
   })
   describe('getPayrollReport method', () => {
     it('exists', () => {
-      expect(reports()).to.respondTo('getPayrollReport')
+      expect(reports).to.respondTo('getPayrollReport')
     })
   })
   describe('getProjectReport method', () => {
     it('exists', () => {
-      expect(reports()).to.respondTo('getProjectReport')
+      expect(reports).to.respondTo('getProjectReport')
     })
   })
   describe('getCurrentTotalsReport method', () => {
     it('exists', () => {
-      expect(reports()).to.respondTo('getCurrentTotalsReport')
+      expect(reports).to.respondTo('getCurrentTotalsReport')
     })
   })
 })

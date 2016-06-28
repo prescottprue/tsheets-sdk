@@ -6,9 +6,9 @@ import users from './users'
 import reports from './reports'
 
 // Original API
-export const reportTime = (reportData) => timesheets().add(reportData)
-export const getTimesheets = () => timesheets().get()
-export const getJobcodes = () => jobcodes().get()
+export const reportTime = (reportData) => timesheets.add(reportData)
+export const getTimesheets = () => timesheets.get()
+export const getJobcodes = () => jobcodes.get()
 
 export default class TSheets {
 

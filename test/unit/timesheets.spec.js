@@ -3,26 +3,26 @@ import { timesheets } from '../../src'
 
 describe('timesheets', () => {
   it('is a function', () => {
-    expect(timesheets).to.be.a.function
+    expect(timesheets).to.be.an.object
   })
   describe('get', () => {
     it('exists', () => {
-      expect(timesheets()).to.respondTo('get')
+      expect(timesheets).to.respondTo('get')
     })
   })
   describe('add', () => {
     it('exists', () => {
-      expect(timesheets()).to.respondTo('add')
+      expect(timesheets).to.respondTo('add')
     })
   })
   describe('remove', () => {
     it('exists', () => {
-      expect(timesheets()).to.respondTo('remove')
+      expect(timesheets).to.respondTo('remove')
     })
   })
   describe('update', () => {
     it('exists', () => {
-      expect(timesheets()).to.respondTo('update')
+      expect(timesheets).to.respondTo('update')
     })
   })
 })
