@@ -10,4 +10,19 @@ describe('groups', () => {
       expect(groups()).to.respondTo('get')
     })
   })
+  describe('add', () => {
+    it('exists', () => {
+      expect(groups()).to.respondTo('add')
+    })
+  })
+  describe('remove', () => {
+    it('exists', () => {
+      expect(groups()).to.respondTo('remove')
+    })
+  })
+  describe('update', () => {
+    it('exists', () => {
+      expect(groups()).to.respondTo('update')
+    })
+  })
 })
