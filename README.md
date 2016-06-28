@@ -65,8 +65,8 @@ MIT © [Scott Prue](http://prue.io)
 [daviddm-url]: https://david-dm.org/prescottprue/tsheets-sdk
 [climate-image]: https://img.shields.io/codeclimate/github/prescottprue/tsheets-sdk.svg?style=flat-square
 [climate-url]: https://codeclimate.com/github/prescottprue/tsheets-sdk
-[coverage-image]: https://img.shields.io/codeclimate/coverage/github/prescottprue/tsheets-sdk.svg?style=flat-square
-[coverage-url]: https://codeclimate.com/github/prescottprue/tsheets-sdk
+[coverage-image]: https://img.shields.io/codecov/c/github/prescottprue/gitsearch.svg?style=flat-square
+[coverage-url]: https://codecov.io/gh/prescottprue/tsheets-sdk
 [license-image]: https://img.shields.io/npm/l/tsheets-sdk.svg?style=flat-square
 [license-url]: https://github.com/prescottprue/tsheets-sdk/blob/master/LICENSE
 [code-style-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
