@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- '5'
+- '6'
+script:
+- npm run lint
+- npm test
+
+sudo: false
+deploy:
+  provider: npm
+  email: $NPM_EMAIL
+  api_key:
+    secure: $NPM_KEY
+    tags: true
+    repo: prescottprue/tsheets-sdk
+notifications:
+  email: false
+  slack:
+    secure: $SLACK_KEY
+after_success:
+- bash <(curl -s https://codecov.io/bash)
