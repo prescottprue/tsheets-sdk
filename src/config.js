@@ -5,6 +5,10 @@ export const groupsEndpoint = 'groups'
 export const jobcodesEndpoint = 'jobcodes'
 export const usersEndpoint = 'users'
 export const timesheetsEndpoint = 'timesheets'
+export const reportsEndpoints = {
+  base: 'reports', project: 'project',
+  payroll: 'payroll', currentTotals: 'currentTotals'
+}
 
 export default {
   apiUrl, defaultStartDate, tokenVarName,

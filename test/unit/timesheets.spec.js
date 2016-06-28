@@ -10,4 +10,19 @@ describe('timesheets', () => {
       expect(timesheets()).to.respondTo('get')
     })
   })
+  describe('add', () => {
+    it('exists', () => {
+      expect(timesheets()).to.respondTo('add')
+    })
+  })
+  describe('remove', () => {
+    it('exists', () => {
+      expect(timesheets()).to.respondTo('remove')
+    })
+  })
+  describe('update', () => {
+    it('exists', () => {
+      expect(timesheets()).to.respondTo('update')
+    })
+  })
 })

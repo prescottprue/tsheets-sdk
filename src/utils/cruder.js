@@ -12,7 +12,7 @@ export const makeRequest = (params) => {
   const { endpoint, method, body, qs } = params
 
   let opts = {
-    url: `${apiUrl}/${endpoint.replace('/', '')}`,
+    url: `${apiUrl}/${endpoint}`,
     method,
     json: true,
     headers: {
