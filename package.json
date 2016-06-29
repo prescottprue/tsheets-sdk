@@ -52,6 +52,7 @@
     "rimraf": "^2.5.1"
   },
   "dependencies": {
+    "codecov": "^1.0.1",
     "request": "^2.72.0"
   }
 }

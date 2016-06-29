@@ -25,6 +25,8 @@ import { reports, timesheets, groups, jobcodes } from 'tsheets-sdk'
 
 ## API
 
+### Reports
+
 #### `reports.getPayrollReport(params)`
 
 Retrieves a payroll report, with filters to narrow down the results.
@@ -100,7 +102,12 @@ Gets timesheets for the specified user(s) for the provided time period.
 **Example**
 
 ```js
-import { reports } from 'tsheets-sdk'
+
+import { timesheets } from 'tsheets-sdk'
+// Can be imported from top level as well
+// import Tsheets from 'tsheets-sdk'
+// const { timesheets } = Tsheets
+
 timesheets().get()
   .then(report => console.log('timesheets:', timesheets))
   .catch(error => console.error('error getting timesheets:', error))
@@ -114,6 +121,55 @@ timesheets().get()
 | end_date   | `YYYY-MM-DD` for the end date.                   | string   | Yes      |
 | user_ids   | Array of TSheets user IDs to get timesheets for. | number[] | No       |
 | page       | Page number for timesheets (max 50 per page).    | number   | No       |
+
+### Jobcodes
+
+#### `jobcodes.get(params)`
+
+Gets jobcodes for the specified user(s) for the provided time period.
+
+**Example**
+
+```js
+import { reports } from 'tsheets-sdk'
+jobcodes().get()
+  .then(report => console.log('jobcodes:', jobcodes))
+  .catch(error => console.error('error getting jobcodes:', error))
+```
+
+**Params**
+
+| Parameter  | Description                                      | Type     | Required |
+|------------|--------------------------------------------------|----------|----------|
+| start_date | `YYYY-MM-DD` for the starting date.              | string   | Yes      |
+| end_date   | `YYYY-MM-DD` for the end date.                   | string   | Yes      |
+| user_ids   | Array of TSheets user IDs to get jobcodes for. | number[] | No       |
+| page       | Page number for jobcodes (max 50 per page).    | number   | No       |
+
+### Users
+
+#### `users.get(params)`
+
+Gets users for the specified id(s).
+
+**Example**
+
+```js
+import { reports } from 'tsheets-sdk'
+users().get()
+  .then(report => console.log('users:', users))
+  .catch(error => console.error('error getting users:', error))
+```
+
+**Params**
+
+| Parameter  | Description                                      | Type     | Required |
+|------------|--------------------------------------------------|----------|----------|
+| start_date | `YYYY-MM-DD` for the starting date.              | string   | Yes      |
+| end_date   | `YYYY-MM-DD` for the end date.                   | string   | Yes      |
+| user_ids   | Array of TSheets user IDs to get users for. | number[] | No       |
+| page       | Page number for users (max 50 per page).    | number   | No       |
+
 
 ## Contribution
 

@@ -1,12 +1,15 @@
 language: node_js
+
 node_js:
 - '6'
+
 script:
 - npm run lint
 - npm run test:cov
 - npm run build
 
 sudo: false
+
 deploy:
   provider: npm
   email: $NPM_EMAIL
