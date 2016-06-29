@@ -1,7 +1,6 @@
 /* global describe, it, beforeEach, expect, nock */
 import { apiUrl, defaultStartDate } from '../../src/config'
 import { today } from '../../src/utils'
-
 import { timesheets } from '../../src'
 
 describe('timesheets', () => {
