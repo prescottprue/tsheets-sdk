@@ -13,7 +13,7 @@ export const getJobcodes = () => jobcodes.get()
 export default class TSheets {
 
   constructor () {
-    Object.assign(this, { utils, timesheets, jobcodes, groups, users, reports })
+    Object.assign({}, this, { utils, timesheets, jobcodes, groups, users, reports })
   }
 
 }

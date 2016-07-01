@@ -28,7 +28,7 @@ export const makeRequest = (params) => {
       console.log('error:', err)
       if (err) return reject(err)
       if (res.statusCode >= 300) {
-        return reject(new Error(res.message || 'Invalid response, statusCode=' + res.statusCode))
+        return reject(res.body.error || res.body)
       }
       console.log('request response:', json)
       resolve(json)
