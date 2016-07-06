@@ -5,9 +5,9 @@ import { jobcodesEndpoint as endpoint, defaultStartDate } from './config'
 const methods = {
 
   get: (q) => {
-    if (!q) q = {}
-    if (!q.start_date) q.start_date = defaultStartDate
-    if (!q.end_date) q.end_date = today()
+    // if (!q) q = {}
+    // if (!q.start_date) q.start_date = defaultStartDate
+    // if (!q.end_date) q.end_date = today()
     return get(endpoint)(q)
   }
 
