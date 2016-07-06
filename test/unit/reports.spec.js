@@ -1,6 +1,5 @@
 /* global describe, it, beforeEach, expect, nock */
 import { apiUrl, defaultStartDate } from '../../src/config'
-import { today } from '../../src/utils'
 import { reports } from '../../src'
 
 describe('reports', () => {
@@ -10,7 +9,7 @@ describe('reports', () => {
   describe('getPayrollReport method', () => {
     beforeEach(() =>
       nock(`${apiUrl}/reports`)
-        .post('/payroll', { data: { 'start_date': defaultStartDate, 'end_date': today() } })
+        .post('/payroll', { data: { 'start_date': defaultStartDate } })
         .reply(200, {
           results: {},
           'supplemental_data': {}
@@ -21,14 +20,14 @@ describe('reports', () => {
     })
     it('calls tsheets POST endpoint', () =>
       reports
-        .getPayrollReport()
+        .getPayrollReport({ start_date: defaultStartDate })
         .should.eventually.exist
     )
   })
   describe('getProjectReport method', () => {
     beforeEach(() =>
       nock(`${apiUrl}/reports`)
-        .post('/project', { data: { 'start_date': defaultStartDate, 'end_date': today() } })
+        .post('/project', { data: { 'start_date': defaultStartDate } })
         .reply(200, {
           results: {},
           'supplemental_data': {}
@@ -39,14 +38,14 @@ describe('reports', () => {
     })
     it('calls tsheets POST endpoint', () =>
       reports
-        .getProjectReport()
+        .getProjectReport({ start_date: defaultStartDate })
         .should.eventually.exist
     )
   })
   describe('getCurrentTotalsReport method', () => {
     beforeEach(() =>
       nock(`${apiUrl}/reports`)
-        .post('/currentTotals', { data: { 'start_date': defaultStartDate, 'end_date': today() } })
+        .post('/currentTotals', { data: { 'start_date': defaultStartDate } })
         .reply(200, {
           results: {},
           'supplemental_data': {}
@@ -57,7 +56,7 @@ describe('reports', () => {
     })
     it('calls tsheets POST endpoint', () =>
       reports
-        .getCurrentTotalsReport()
+        .getCurrentTotalsReport({ start_date: defaultStartDate })
         .should.eventually.exist
     )
   })

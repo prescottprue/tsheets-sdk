@@ -1,6 +1,5 @@
 /* global describe, it, beforeEach, expect, nock */
 import { apiUrl, defaultStartDate } from '../../src/config'
-import { today } from '../../src/utils'
 import { timesheets } from '../../src'
 
 describe('timesheets', () => {
@@ -11,7 +10,7 @@ describe('timesheets', () => {
     beforeEach(() =>
       nock(`${apiUrl}`)
         .get('/timesheets')
-        .query({'start_date': defaultStartDate, 'end_date': today()})
+        .query({'start_date': defaultStartDate})
         .reply(200, {
           results: {},
           'supplemental_data': {}
@@ -22,8 +21,11 @@ describe('timesheets', () => {
     })
     it('calls endpoint', () =>
       timesheets
-        .get()
+        .get({'start_date': defaultStartDate})
         .should.eventually.have.property('results')
+    )
+    it.skip('throws without query', () =>
+      expect(timesheets.get.bind(timesheets, null)).to.throw('Object with query parameters required to get timesheets')
     )
   })
   describe('add', () => {
