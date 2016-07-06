@@ -1,25 +1,27 @@
 import { post } from './utils/cruder'
-import { today } from './utils'
-import { reportsEndpoints, defaultStartDate } from './config'
+import { reportsEndpoints } from './config'
 const { base, payroll, project, currentTotals } = reportsEndpoints
 
 const methods = {
   getPayrollReport: (body) => {
-    if (!body) body = {}
-    if (!body.start_date) body.start_date = defaultStartDate
-    if (!body.end_date) body.end_date = today()
+    if (!body) throw Error('Report query object required')
+    if (!body.start_date && !body.end_date) {
+      throw Error('Query containing start_date, end_date, modified_since, or modified_before required')
+    }
     return post(`${base}/${payroll}`)(body).then(({results}) => results)
   },
   getProjectReport: (body) => {
-    if (!body) body = {}
-    if (!body.start_date) body.start_date = defaultStartDate
-    if (!body.end_date) body.end_date = today()
+    if (!body) throw Error('Report query object required')
+    if (!body.start_date && !body.end_date) {
+      throw Error('Query containing start_date, end_date, modified_since, or modified_before required')
+    }
     return post(`${base}/${project}`)(body).then(({results}) => results)
   },
   getCurrentTotalsReport: (body) => {
-    if (!body) body = {}
-    if (!body.start_date) body.start_date = defaultStartDate
-    if (!body.end_date) body.end_date = today()
+    if (!body) throw Error('Report query object required')
+    if (!body.start_date && !body.end_date) {
+      throw Error('Query containing start_date, end_date, modified_since, or modified_before required')
+    }
     return post(`${base}/${currentTotals}`)(body).then(({results}) => results)
   }
 }

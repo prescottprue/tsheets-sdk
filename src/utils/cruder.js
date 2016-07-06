@@ -22,7 +22,6 @@ export const makeRequest = (params) => {
 
   if (body && Object.keys(body).length) opts.json = { data: body }
   if (qs) opts.qs = qs
-  console.log('request:', opts)
   return new Promise((resolve, reject) => {
     request(opts, (err, res, json) => {
       console.log('error:', err)
@@ -30,7 +29,6 @@ export const makeRequest = (params) => {
       if (res.statusCode >= 300) {
         return reject(res.body.error || res.body)
       }
-      console.log('request response:', json)
       resolve(json)
     })
   })

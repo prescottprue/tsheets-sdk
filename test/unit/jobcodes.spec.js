@@ -1,7 +1,5 @@
 /* global describe, it, beforeEach, expect, nock */
 import { apiUrl, defaultStartDate } from '../../src/config'
-import { today } from '../../src/utils'
-
 import { jobcodes } from '../../src'
 
 describe('jobcodes', () => {
@@ -12,7 +10,7 @@ describe('jobcodes', () => {
     beforeEach(() =>
       nock(`${apiUrl}`)
         .get('/jobcodes')
-        .query({'start_date': defaultStartDate, 'end_date': today()})
+        .query({ 'start_date': defaultStartDate })
         .reply(200, {
           results: {},
           'supplemental_data': {}
@@ -23,8 +21,11 @@ describe('jobcodes', () => {
     })
     it('calls tsheets GET endpoint', () =>
       jobcodes
-        .get()
+        .get({ start_date: defaultStartDate })
         .should.eventually.have.property('results')
+    )
+    it.skip('throws with null input', () =>
+      expect(jobcodes.get.bind(jobcodes, null)).to.throw('Report query object required')
     )
   })
   describe('add', () => {
