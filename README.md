@@ -150,13 +150,14 @@ jobcodes().get()
 
 #### `users.get(params)`
 
-Gets users for the specified id(s).
+Gets users for the specified filters.
 
 **Example**
 
 ```js
 import { reports } from 'tsheets-sdk'
-users().get()
+const start_date = '2016-01-01'
+users().get({ start_date })
   .then(report => console.log('users:', users))
   .catch(error => console.error('error getting users:', error))
 ```
@@ -169,6 +170,31 @@ users().get()
 | end_date   | `YYYY-MM-DD` for the end date.                   | string   | Yes      |
 | user_ids   | Array of TSheets user IDs to get users for. | number[] | No       |
 | page       | Page number for users (max 50 per page).    | number   | No       |
+
+### Groups
+
+#### `groups.get(params)`
+
+Gets groups based on filters.
+
+**Example**
+
+```js
+import { reports } from 'tsheets-sdk'
+const start_date = '2016-01-01'
+groups().get({ start_date })
+  .then(report => console.log('groups:', groups))
+  .catch(error => console.error('error getting groups:', error))
+```
+
+**Params**
+
+| Parameter  | Description                                      | Type     | Required |
+|------------|--------------------------------------------------|----------|----------|
+| start_date | `YYYY-MM-DD` for the starting date.              | string   | Yes      |
+| end_date   | `YYYY-MM-DD` for the end date.                   | string   | Yes      |
+| user_ids   | Array of TSheets user IDs to get groups for. | number[] | No       |
+| page       | Page number for groups (max 50 per page).    | number   | No       |
 
 
 ## Contribution
@@ -193,7 +219,7 @@ MIT © [Scott Prue](http://prue.io)
 [daviddm-url]: https://david-dm.org/prescottprue/tsheets-sdk
 [climate-image]: https://img.shields.io/codeclimate/github/prescottprue/tsheets-sdk.svg?style=flat-square
 [climate-url]: https://codeclimate.com/github/prescottprue/tsheets-sdk
-[coverage-image]: https://img.shields.io/codecov/c/github/prescottprue/gitsearch.svg?style=flat-square
+[coverage-image]: https://img.shields.io/codecov/c/github/prescottprue/tsheets-sdk.svg?style=flat-square
 [coverage-url]: https://codecov.io/gh/prescottprue/tsheets-sdk
 [license-image]: https://img.shields.io/npm/l/tsheets-sdk.svg?style=flat-square
 [license-url]: https://github.com/prescottprue/tsheets-sdk/blob/master/LICENSE
