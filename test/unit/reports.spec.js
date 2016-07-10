@@ -45,7 +45,7 @@ describe('reports', () => {
   describe('getCurrentTotalsReport method', () => {
     beforeEach(() =>
       nock(`${apiUrl}/reports`)
-        .post('/currentTotals', { data: { 'start_date': defaultStartDate } })
+        .post('/current_totals', { data: { group_ids: [] } })
         .reply(200, {
           results: {},
           'supplemental_data': {}
@@ -56,7 +56,7 @@ describe('reports', () => {
     })
     it('calls tsheets POST endpoint', () =>
       reports
-        .getCurrentTotalsReport({ start_date: defaultStartDate })
+        .getCurrentTotalsReport({ group_ids: [] })
         .should.eventually.exist
     )
   })
