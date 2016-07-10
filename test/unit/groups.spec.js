@@ -1,6 +1,5 @@
 /* global describe, it, beforeEach, nock, expect */
-import { apiUrl, defaultStartDate } from '../../src/config'
-import { today } from '../../src/utils'
+import { apiUrl } from '../../src/config'
 import { groups } from '../../src'
 
 describe('groups', () => {
@@ -11,7 +10,7 @@ describe('groups', () => {
     beforeEach(() =>
       nock(`${apiUrl}`)
         .get('/groups')
-        .query({'start_date': defaultStartDate, 'end_date': today()})
+        .query({group_ids: []})
         .reply(200, {
           results: {},
           'supplemental_data': {}
@@ -22,7 +21,7 @@ describe('groups', () => {
     })
     it('calls tsheets GET endpoint', () =>
       groups
-        .get()
+        .get({group_ids: []})
         .should.eventually.have.property('results')
     )
   })

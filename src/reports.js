@@ -30,7 +30,7 @@ const methods = {
   },
   getCurrentTotalsReport: (body) => {
     if (!body) throw Error('Report query object required')
-    if (!body.group_ids || !body.user_ids) {
+    if (!body.group_ids && !body.user_ids) {
       throw Error('Query containing user_ids, group_ids, on_the_clock required')
     }
     return post(`${base}/${currentTotals}`)(body)

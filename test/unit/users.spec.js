@@ -22,7 +22,7 @@ describe('users', () => {
     })
     it('calls tsheets GET endpoint', () =>
       users
-        .get()
+        .get({})
         .should.eventually.have.property('results')
     )
   })
