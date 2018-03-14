@@ -5,17 +5,17 @@ import timesheets from './timesheets'
 import users from './users'
 import reports from './reports'
 
-// Original API
-export const reportTime = (reportData) => timesheets.add(reportData)
-export const getTimesheets = () => timesheets.get()
-export const getJobcodes = () => jobcodes.get()
-
 export default class TSheets {
-
-  constructor () {
-    Object.assign(this, { utils, timesheets, jobcodes, groups, users, reports })
+  constructor (request) {
+    Object.assign(this, {
+      utils,
+      timesheets: timesheets(request),
+      jobcodes: jobcodes(request),
+      groups: groups(request),
+      users: users(request),
+      reports: reports(request)
+    })
   }
-
 }
 
 export { utils, timesheets, jobcodes, groups, users, reports }

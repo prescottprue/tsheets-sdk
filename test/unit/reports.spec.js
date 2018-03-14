@@ -4,7 +4,7 @@ import { reports } from '../../src'
 
 describe('reports', () => {
   it('exists', () => {
-    expect(reports).to.be.an.object
+    expect(reports).to.be.an.function
   })
   describe('getPayrollReport method', () => {
     beforeEach(() =>
@@ -16,10 +16,10 @@ describe('reports', () => {
         })
     )
     it('exists', () => {
-      expect(reports).to.respondTo('getPayrollReport')
+      expect(reports()).to.respondTo('getPayrollReport')
     })
     it('calls tsheets POST endpoint', () =>
-      reports
+      reports()
         .getPayrollReport({ start_date: defaultStartDate })
         .should.eventually.exist
     )
@@ -34,10 +34,10 @@ describe('reports', () => {
         })
     )
     it('exists', () => {
-      expect(reports).to.respondTo('getProjectReport')
+      expect(reports()).to.respondTo('getProjectReport')
     })
     it('calls tsheets POST endpoint', () =>
-      reports
+      reports()
         .getProjectReport({ start_date: defaultStartDate })
         .should.eventually.exist
     )
@@ -52,10 +52,10 @@ describe('reports', () => {
         })
     )
     it('exists', () => {
-      expect(reports).to.respondTo('getCurrentTotalsReport')
+      expect(reports()).to.respondTo('getCurrentTotalsReport')
     })
     it('calls tsheets POST endpoint', () =>
-      reports
+      reports()
         .getCurrentTotalsReport({ group_ids: [] })
         .should.eventually.exist
     )

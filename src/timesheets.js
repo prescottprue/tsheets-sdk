@@ -14,8 +14,12 @@ const methods = {
 
 }
 
-export default Object.assign(
+export default request => Object.assign(
   {},
-  cruder(endpoint, ['add', 'remove', 'update']), // functions that don't have validation
+  cruder({
+    endpoint,
+    types: ['add', 'remove', 'update'],
+    request
+  }), // functions that don't have validation
   methods
 )
