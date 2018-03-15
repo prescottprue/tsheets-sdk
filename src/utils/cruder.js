@@ -1,7 +1,6 @@
 import { tokenVarName, apiUrl } from '../config'
 import { getVar as getEnvVar } from './env'
-import { typeReducer } from './index'
-import { today } from '../utils'
+import { today, typeReducer } from '../utils'
 import hiddenRequire from './hiddenRequire'
 
 const dateParams = ['start_date', 'end_date', 'modified_since', 'modified_before']
@@ -11,7 +10,7 @@ const dateParams = ['start_date', 'end_date', 'modified_since', 'modified_before
  * @param {Object} params Token, endpoint, method, body_params.
  * @return {Promise}
  */
-export const makeRequest = (params, request = hiddenRequire('request')) => {
+export const makeRequest = ({ params, request = hiddenRequire('request'), apiKey = getEnvVar(tokenVarName) } = {}) => {
   const { endpoint, method, body, qs } = params
 
   let opts = {
@@ -19,7 +18,7 @@ export const makeRequest = (params, request = hiddenRequire('request')) => {
     method,
     json: true,
     headers: {
-      Authorization: `Bearer ${getEnvVar(tokenVarName)}`
+      Authorization: `Bearer ${apiKey}`
     }
   }
 
@@ -38,23 +37,44 @@ export const makeRequest = (params, request = hiddenRequire('request')) => {
 
 // Switch any date params that are 'today' into today's date
 // TODO: Add support for "now" as well
-export const swapTodayForDate = obj => {
+export const swapTodayForDate = (obj = {}) => {
   Object.keys(obj).forEach(key => {
     if (dateParams.indexOf(key) !== -1 && obj[key] === 'today') obj[key] = today()
   })
   return obj
 }
 
-export const get = (endpoint, request) => qs =>
-  makeRequest({ endpoint, method: 'get', qs: swapTodayForDate(qs) }, request)
+export const get = ({ endpoint, request, apiKey }) => qs =>
+  makeRequest({
+    params: { endpoint, method: 'get', qs: swapTodayForDate(qs) },
+    request,
+    apiKey
+  })
 
-export const remove = (endpoint, request) => (body, qs) =>
-  makeRequest({ endpoint, method: 'remove', body, qs }, request)
+export const remove = ({ endpoint, request, apiKey }) => (body, qs) =>
+  makeRequest({
+    params: { endpoint, method: 'remove', body, qs },
+    request,
+    apiKey
+  })
 
-export const put = (endpoint, request) => body => makeRequest({ endpoint, method: 'put', body }, request)
+export const put = ({ endpoint, request, apiKey }) => body =>
+  makeRequest({
+    params: { endpoint, method: 'put', body },
+    request,
+    apiKey
+  })
 
-export const post = (endpoint, request) => body =>
-  makeRequest({ endpoint, method: 'post', body: swapTodayForDate(body) }, request)
+export const post = ({ endpoint, request, apiKey }) => body =>
+  makeRequest({
+    params: {
+      endpoint,
+      method: 'post',
+      body: swapTodayForDate(body)
+    },
+    request,
+    apiKey
+  })
 
 export const add = post
 export const create = post
@@ -64,7 +84,7 @@ export const update = put
 request is optional to allow different request libraries
 Think non node, google-app-script, rhino, browser fetch
 */
-export default ({ endpoint, types, request }) => {
+export default ({ endpoint, types, request, apiKey }) => {
   let methods = {
     get,
     remove,
@@ -78,6 +98,7 @@ export default ({ endpoint, types, request }) => {
     types,
     methods,
     name: 'cruder',
-    request
+    request,
+    apiKey
   })
 }

@@ -5,17 +5,16 @@ import timesheets from './timesheets'
 import users from './users'
 import reports from './reports'
 
-export default class TSheets {
-  constructor (request) {
-    Object.assign(this, {
-      utils,
-      timesheets: timesheets(request),
-      jobcodes: jobcodes(request),
-      groups: groups(request),
-      users: users(request),
-      reports: reports(request)
-    })
-  }
-}
+const tsheets = ({ request, context, apiKey } = {}) =>
+  Object.assign(context || {}, {
+    utils,
+    timesheets: timesheets(request),
+    jobcodes: jobcodes(request),
+    groups: groups(request),
+    users: users(request),
+    reports: reports(request)
+  })
+
+export default tsheets
 
 export { utils, timesheets, jobcodes, groups, users, reports }

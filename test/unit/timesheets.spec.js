@@ -25,7 +25,8 @@ describe('timesheets', () => {
         .should.eventually.have.property('results')
     )
     it.skip('throws without query', () =>
-      expect(timesheets().get.bind(timesheets, null)).to.throw('Object with query parameters required to get timesheets')
+      expect(timesheets().get.bind(timesheets, null))
+      .to.throw('Object with query parameters required to get timesheets')
     )
   })
   describe('add', () => {
