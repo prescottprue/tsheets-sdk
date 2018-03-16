@@ -3,13 +3,14 @@ import { groupsEndpoint as endpoint } from './config'
 
 const methods = {}
 
-export default request =>
+export default (request, apiKey) =>
   Object.assign(
     {},
     cruder({
       endpoint,
       types: ['get', 'add', 'remove', 'update'],
-      request
+      request,
+      apiKey
     }), // functions that don't have validation
     methods
   )

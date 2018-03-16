@@ -15,13 +15,14 @@ const methods = {
   }
 }
 
-export default request =>
+export default (request, apiKey) =>
   Object.assign(
     {},
     cruder({
       endpoint,
       types: ['add', 'remove', 'update'],
-      request
+      request,
+      apiKey
     }), // functions that don't have validation
     methods
   )
