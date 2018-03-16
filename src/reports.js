@@ -9,7 +9,6 @@ const methods = request => ({
       throw Error('Query containing start_date, end_date, modified_since, or modified_before required')
     }
     return post({ endpoint: `${base}/${payroll}`, request })(body)
-      .then(({ results }) => results)
       .catch(error => {
         console.error('Error posting', JSON.stringify(error))
         return Promise.reject(error)
@@ -22,7 +21,6 @@ const methods = request => ({
     //   throw Error('Query containing user_ids, group_ids, on_the_clock required')
     // }
     return post({ endpoint: `${base}/${project}`, request })(body)
-      .then(({ results }) => results.project_report || results)
       .catch(error => {
         console.error('Error posting', JSON.stringify(error))
         return Promise.reject(error)
@@ -34,7 +32,6 @@ const methods = request => ({
       throw Error('Query containing user_ids, group_ids, on_the_clock required')
     }
     return post({ endpoint: `${base}/${currentTotals}`, request })(body)
-      .then(({ results }) => results)
       .catch(error => {
         console.error('Error posting', JSON.stringify(error))
         return Promise.reject(error)
