@@ -8,11 +8,11 @@ import reports from './reports'
 const tsheets = ({ request, context, apiKey } = {}) =>
   Object.assign(context || {}, {
     utils,
-    timesheets: timesheets(request),
-    jobcodes: jobcodes(request),
-    groups: groups(request),
-    users: users(request),
-    reports: reports(request)
+    timesheets: timesheets(request, apiKey),
+    jobcodes: jobcodes(request, apiKey),
+    groups: groups(request, apiKey),
+    users: users(request, apiKey),
+    reports: reports(request, apiKey)
   })
 
 export default tsheets
