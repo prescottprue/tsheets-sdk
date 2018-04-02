@@ -24,6 +24,24 @@ describe('reports', () => {
         .should.eventually.exist
     )
   })
+  describe('getPayrollByJobcodeReport method', () => {
+    beforeEach(() =>
+      nock(`${apiUrl}/reports`)
+        .post('/payroll_by_jobcode', { data: { 'start_date': defaultStartDate } })
+        .reply(200, {
+          results: {},
+          'supplemental_data': {}
+        })
+    )
+    it('exists', () => {
+      expect(reports()).to.respondTo('getPayrollByJobcodeReport')
+    })
+    it('calls tsheets POST endpoint', () =>
+      reports()
+        .getPayrollByJobcodeReport({ start_date: defaultStartDate })
+        .should.eventually.exist
+    )
+  })
   describe('getProjectReport method', () => {
     beforeEach(() =>
       nock(`${apiUrl}/reports`)

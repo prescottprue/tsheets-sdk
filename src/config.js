@@ -10,6 +10,7 @@ export const reportsEndpoints = {
   base: 'reports',
   project: 'project',
   payroll: 'payroll',
+  payrollByJobcode: 'payroll_by_jobcode',
   currentTotals: 'current_totals'
 }
 

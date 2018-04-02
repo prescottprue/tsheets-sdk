@@ -1,6 +1,6 @@
 import { post } from './utils/cruder'
 import { reportsEndpoints } from './config'
-const { base, payroll, project, currentTotals } = reportsEndpoints
+const { base, payroll, payrollByJobcode, project, currentTotals } = reportsEndpoints
 
 const methods = (request, apiKey) => ({
   getPayrollReport: body => {
@@ -9,6 +9,16 @@ const methods = (request, apiKey) => ({
       throw Error('Query containing start_date, end_date, modified_since, or modified_before required')
     }
     return post({ endpoint: `${base}/${payroll}`, request, apiKey })(body).catch(error => {
+      console.error('Error posting', JSON.stringify(error))
+      return Promise.reject(error)
+    })
+  },
+  getPayrollByJobcodeReport: body => {
+    if (!body) throw Error('Report query object required')
+    if (!body.start_date && !body.end_date) {
+      throw Error('Query containing start_date, end_date, modified_since, or modified_before required')
+    }
+    return post({ endpoint: `${base}/${payrollByJobcode}`, request, apiKey })(body).catch(error => {
       console.error('Error posting', JSON.stringify(error))
       return Promise.reject(error)
     })
