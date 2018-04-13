@@ -1,6 +1,6 @@
 {
   "name": "tsheets-sdk",
-  "version": "0.2.0",
+  "version": "1.0.0-0",
   "description": "TSheets JS SDK for full API access.",
   "main": "./lib/index.js",
   "module": "./es/tsheets-sdk.js",
