@@ -16,7 +16,7 @@ deploy:
   api_key:
     secure: $NPM_KEY
     tags: true
-    repo: nmccready/tsheets-sdk
+    repo: prescottprue/tsheets-sdk
 
-# after_success:
-# - bash <(curl -s https://codecov.io/bash)
+after_success:
+- bash <(curl -s https://codecov.io/bash)
