@@ -2,7 +2,7 @@ var chai = global.chai = require('chai')
 var expect = global.expect = chai.expect
 var should = global.should = chai.should()
 var nock = global.nock = require('nock')
-
+process.env.TSHEETS_TOKEN = 'test'
 // var Promise = require('es6-promise').Promise
 // global.Promise = Promise
 
