@@ -4,7 +4,7 @@ import { timesheets } from '../../src'
 
 describe('timesheets', () => {
   it('is a function', () => {
-    expect(timesheets).to.be.an.object
+    expect(timesheets).to.be.an.function
   })
   describe('get', () => {
     beforeEach(() =>
@@ -17,30 +17,31 @@ describe('timesheets', () => {
         })
     )
     it('exists', () => {
-      expect(timesheets).to.respondTo('get')
+      expect(timesheets()).to.respondTo('get')
     })
     it('calls endpoint', () =>
-      timesheets
+      timesheets()
         .get({'start_date': defaultStartDate})
         .should.eventually.have.property('results')
     )
     it.skip('throws without query', () =>
-      expect(timesheets.get.bind(timesheets, null)).to.throw('Object with query parameters required to get timesheets')
+      expect(timesheets().get.bind(timesheets, null))
+      .to.throw('Object with query parameters required to get timesheets')
     )
   })
   describe('add', () => {
     it('exists', () => {
-      expect(timesheets).to.respondTo('add')
+      expect(timesheets()).to.respondTo('add')
     })
   })
   describe('remove', () => {
     it('exists', () => {
-      expect(timesheets).to.respondTo('remove')
+      expect(timesheets()).to.respondTo('remove')
     })
   })
   describe('update', () => {
     it('exists', () => {
-      expect(timesheets).to.respondTo('update')
+      expect(timesheets()).to.respondTo('update')
     })
   })
 })

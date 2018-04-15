@@ -1,12 +1,16 @@
 import cruder from './utils/cruder'
 import { groupsEndpoint as endpoint } from './config'
 
-const methods = {
+const methods = {}
 
-}
-
-export default Object.assign(
-  {},
-  cruder(endpoint, ['get', 'add', 'remove', 'update']), // functions that don't have validation
-  methods
-)
+export default (request, apiKey) =>
+  Object.assign(
+    {},
+    cruder({
+      endpoint,
+      types: ['get', 'add', 'remove', 'update'],
+      request,
+      apiKey
+    }), // functions that don't have validation
+    methods
+  )

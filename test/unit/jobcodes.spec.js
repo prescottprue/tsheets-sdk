@@ -4,43 +4,41 @@ import { jobcodes } from '../../src'
 
 describe('jobcodes', () => {
   it('exists', () => {
-    expect(jobcodes).to.be.an.object
+    expect(jobcodes).to.be.an.function
   })
   describe('get method', () => {
     beforeEach(() =>
       nock(`${apiUrl}`)
         .get('/jobcodes')
-        .query({ 'start_date': defaultStartDate })
+        .query({ start_date: defaultStartDate })
         .reply(200, {
           results: {},
-          'supplemental_data': {}
+          supplemental_data: {}
         })
     )
     it('exists', () => {
-      expect(jobcodes).to.respondTo('get')
+      expect(jobcodes()).to.respondTo('get')
     })
     it('calls tsheets GET endpoint', () =>
-      jobcodes
+      jobcodes()
         .get({ start_date: defaultStartDate })
-        .should.eventually.have.property('results')
-    )
+        .should.eventually.have.property('results'))
     it.skip('throws with null input', () =>
-      expect(jobcodes.get.bind(jobcodes, null)).to.throw('Report query object required')
-    )
+      expect(jobcodes().get.bind(jobcodes, null)).to.throw('Report query object required'))
   })
   describe('add', () => {
     it('exists', () => {
-      expect(jobcodes).to.respondTo('add')
+      expect(jobcodes()).to.respondTo('add')
     })
   })
   describe('remove', () => {
     it('exists', () => {
-      expect(jobcodes).to.respondTo('remove')
+      expect(jobcodes()).to.respondTo('remove')
     })
   })
   describe('update', () => {
     it('exists', () => {
-      expect(jobcodes).to.respondTo('update')
+      expect(jobcodes()).to.respondTo('update')
     })
   })
 })

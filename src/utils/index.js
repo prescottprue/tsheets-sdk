@@ -12,22 +12,18 @@ export const today = () => {
   return `${yyyy}-${mm}-${dd}`
 }
 
-export const typeReducer = (endpoint, types, methods, name) =>
-  types
-    .reduce((returnedMethods, type) => {
-      let method = {}
-      if (typeof methods[type] === 'undefined') {
-        throw Error(`${type} is not a valid ${name ? 'method of ' + name : 'method'}`)
-      }
-      method[type] = methods[type].call(this, endpoint)
-      return Object.assign({}, returnedMethods, method)
-    }, {})
+export const typeReducer = ({ endpoint, types, methods, name, request, apiKey }) =>
+  types.reduce((returnedMethods, type) => {
+    let method = {}
+    if (typeof methods[type] === 'undefined') {
+      throw Error(`${type} is not a valid ${name ? 'method of ' + name : 'method'}`)
+    }
+    method[type] = methods[type].call(this, { endpoint, request, apiKey })
+    return Object.assign({}, returnedMethods, method)
+  }, {})
 
 // export const populate = (main, supplemental) => {
 //   let final = {}
 //   Object.keys(main).forEach((item) =>  )
 // }
-export default Object.assign(
-  {},
-  { today, typeReducer }
-)
+export default Object.assign({}, { today, typeReducer })
