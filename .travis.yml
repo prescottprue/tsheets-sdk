@@ -15,7 +15,6 @@ deploy:
   email: $NPM_EMAIL
   api_key:
     secure: $NPM_KEY
-    tags: true
     repo: prescottprue/tsheets-sdk
 
 after_success:
