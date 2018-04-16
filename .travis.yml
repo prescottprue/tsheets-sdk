@@ -1,7 +1,9 @@
 language: node_js
 
 node_js:
-- '6'
+  - 6.11.5
+  - 8
+  - 9
 
 script:
 - npm run lint:fix
@@ -11,12 +13,12 @@ script:
 sudo: false
 
 deploy:
+  skip_cleanup: true
   provider: npm
   email: $NPM_EMAIL
-  api_key:
-    secure: $NPM_KEY
-    tags: true
-    repo: prescottprue/tsheets-sdk
+  api_key: $NPM_KEY
+  on:
+    node: '9'
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)

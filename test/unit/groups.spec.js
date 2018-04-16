@@ -4,7 +4,7 @@ import { groups } from '../../src'
 
 describe('groups', () => {
   it('is an object', () => {
-    expect(groups).to.be.an.object
+    expect(groups).to.be.an.function
   })
   describe('get', () => {
     beforeEach(() =>
@@ -17,27 +17,27 @@ describe('groups', () => {
         })
     )
     it('exists', () => {
-      expect(groups).to.respondTo('get')
+      expect(groups()).to.respondTo('get')
     })
     it('calls tsheets GET endpoint', () =>
-      groups
+      groups()
         .get({group_ids: []})
         .should.eventually.have.property('results')
     )
   })
   describe('add', () => {
     it('exists', () => {
-      expect(groups).to.respondTo('add')
+      expect(groups()).to.respondTo('add')
     })
   })
   describe('remove', () => {
     it('exists', () => {
-      expect(groups).to.respondTo('remove')
+      expect(groups()).to.respondTo('remove')
     })
   })
   describe('update', () => {
     it('exists', () => {
-      expect(groups).to.respondTo('update')
+      expect(groups()).to.respondTo('update')
     })
   })
 })

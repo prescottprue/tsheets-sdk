@@ -5,7 +5,7 @@ import { today } from '../../src/utils'
 
 describe('users', () => {
   it('is a function', () => {
-    expect(users).to.be.an.object
+    expect(users).to.be.an.function
   })
   describe('get', () => {
     beforeEach(() =>
@@ -18,27 +18,27 @@ describe('users', () => {
         })
     )
     it('exists', () => {
-      expect(users).to.respondTo('get')
+      expect(users()).to.respondTo('get')
     })
     it('calls tsheets GET endpoint', () =>
-      users
+      users()
         .get({})
         .should.eventually.have.property('results')
     )
   })
   describe('add', () => {
     it('exists', () => {
-      expect(users).to.respondTo('add')
+      expect(users()).to.respondTo('add')
     })
   })
   describe('remove', () => {
     it('exists', () => {
-      expect(users).to.respondTo('remove')
+      expect(users()).to.respondTo('remove')
     })
   })
   describe('update', () => {
     it('exists', () => {
-      expect(users).to.respondTo('update')
+      expect(users()).to.respondTo('update')
     })
   })
 })
