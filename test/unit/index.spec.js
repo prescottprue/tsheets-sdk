@@ -4,7 +4,7 @@ const library = new TSheets()
 describe('tsheets-sdk', () => {
   describe('default export', () => {
     it('exports a class function', () => {
-      expect(TSheets).to.be.a.function
+      expect(TSheets).to.be.a('function')
     })
     it('has groups parameter', () => {
       expect(library).to.have.property('groups')

@@ -5,7 +5,7 @@ import { today } from '../../src/utils'
 
 describe('users', () => {
   it('is a function', () => {
-    expect(users).to.be.an.function
+    expect(users).to.be.a('function')
   })
   describe('get', () => {
     beforeEach(() =>

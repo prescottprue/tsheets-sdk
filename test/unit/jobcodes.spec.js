@@ -4,7 +4,7 @@ import { jobcodes } from '../../src'
 
 describe('jobcodes', () => {
   it('exists', () => {
-    expect(jobcodes).to.be.an.function
+    expect(jobcodes).to.be.a('function')
   })
   describe('get method', () => {
     beforeEach(() =>

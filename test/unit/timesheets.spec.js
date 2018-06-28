@@ -4,7 +4,7 @@ import { timesheets } from '../../src'
 
 describe('timesheets', () => {
   it('is a function', () => {
-    expect(timesheets).to.be.an.function
+    expect(timesheets).to.be.a('function')
   })
   describe('get', () => {
     beforeEach(() =>

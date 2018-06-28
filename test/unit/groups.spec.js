@@ -4,7 +4,7 @@ import { groups } from '../../src'
 
 describe('groups', () => {
   it('is an object', () => {
-    expect(groups).to.be.an.function
+    expect(groups).to.be.a('function')
   })
   describe('get', () => {
     beforeEach(() =>

@@ -4,7 +4,7 @@ import { reports } from '../../src'
 
 describe('reports', () => {
   it('exists', () => {
-    expect(reports).to.be.an.function
+    expect(reports).to.be.a('function')
   })
   describe('getPayrollReport method', () => {
     beforeEach(() =>
