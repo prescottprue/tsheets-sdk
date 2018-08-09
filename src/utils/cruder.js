@@ -1,7 +1,7 @@
 import { tokenVarName, apiUrl } from '../config'
 import { getVar as getEnvVar } from './env'
 import { today, typeReducer } from '../utils'
-import hiddenRequire from './hiddenRequire'
+import hiddenRequire from 'hidden-require'
 
 const dateParams = ['start_date', 'end_date', 'modified_since', 'modified_before']
 
